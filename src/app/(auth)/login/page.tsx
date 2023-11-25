@@ -1,3 +1,3 @@
 export default function Login() {
-  return <div>home</div>;
+  return <div>로그인창</div>;
 }
