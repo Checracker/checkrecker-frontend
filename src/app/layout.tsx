@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Providers from "@/Provider/Providers";
+import "./globals.css"; // 전역 스타일 import
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,7 +13,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ margin: 0, padding: 0 }}>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@700&family=Nanum+Gothic:wght@700;800&display=swap"
+          rel="stylesheet"
+        ></link>
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>
