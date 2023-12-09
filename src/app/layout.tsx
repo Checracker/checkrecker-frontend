@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Providers from "@/Provider/Providers";
 import "./globals.css"; // 전역 스타일 import
+import Script from "next/script";
+import { nanumGothic } from "@/app/utils/fonts";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,13 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" style={{ margin: 0, padding: 0 }}>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@700&family=Nanum+Gothic:wght@700;800&display=swap"
-          rel="stylesheet"
-        ></link>
-      </head>
-      <body>
+      <head></head>
+      <body className={nanumGothic.className}>
         <Providers>{children}</Providers>
       </body>
     </html>
