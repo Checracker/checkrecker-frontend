@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 import { Black_Han_Sans } from "next/font/google";
 import { Button } from "@mui/material";
+import Image from "next/image";
 
 const blackHansSans = Black_Han_Sans({
   weight: "400",
@@ -33,7 +34,7 @@ export default function Login() {
       <PatternBox></PatternBox>
       <LoginBox>
         <TitleBox>
-          <Logo src="/img/logo.svg"></Logo>
+          <Logo src="/img/logo.png"></Logo>
           <Title className={blackHansSans.className}>Checracker!</Title>
         </TitleBox>
         <InputBox>
@@ -42,7 +43,13 @@ export default function Login() {
         </InputBox>
 
         <SocialBox>
-          <img src="/img/social.png" style={{ marginTop: "50px" }}></img>
+          <Image
+            width={100}
+            height={30}
+            src="/img/social.png"
+            style={{ marginTop: "50px" }}
+            alt="social"
+          ></Image>
         </SocialBox>
       </LoginBox>
     </Container>
@@ -107,13 +114,14 @@ const LoginBox = styled.div`
   justify-content: center;
   align-items: center;
   flex: 0.4;
-  background-image: url("/img/logo.png");
 `;
 
 const PatternBox = styled.div`
   display: flex;
+  width: 100%;
   flex: 0.6;
-  background-image: url("/img/pattern.png");
+  background-image: url("/img/pattern.svg");
+  background-size: 18.5%;
 `;
 
 const Container = styled.div`
