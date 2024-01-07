@@ -12,7 +12,7 @@ const dummyTodo:TodoProps[] = [{
     id: 0, //_todo id
     boradId: 1, //board id
     order: 2, //ListOrder
-    alarm: true, //alarm checked
+    isAlarm: true, //alarm checked
     title: "todo만들기", //title
     checked: true,
     description: "설명", //_todo description
@@ -27,7 +27,7 @@ const dummyTodo:TodoProps[] = [{
     id: 0, //_todo id
     boradId: 1, //board id
     order: 2, //ListOrder
-    alarm: false, //alarm checked
+    isAlarm: false, //alarm checked
     title: "todo만들기2", //title
     checked: false,
     description: "설명", //_todo description

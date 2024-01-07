@@ -1,4 +1,4 @@
-import { Box, Container as MuiContainer } from "@mui/material";
+import {  Container as MuiContainer } from "@mui/material";
 import React from "react";
 import { styled as muiStyled } from "@mui/material";
 import { TodoProps, TodoStatus } from "@/components/modules/Todo/TodoProps";
@@ -6,6 +6,7 @@ import Bell from "@/components/atoms/MUIIconButton/Bell";
 import BellFilled from "@/components/atoms/MUIIconButton/BellFilled";
 import { nanumGothic } from "@/app/utils/Fonts";
 import CheckCircle from "@/components/atoms/MUIIconButton/CheckCircle";
+import BellButon from "@/components/atoms/MUIIconButton/BellButon";
 
 const filteredStatus = (status:TodoStatus) =>{
     switch(status){
@@ -36,7 +37,7 @@ const Todo = (props: TodoProps) => {
             <TodoBox>
                 <TodoIconBox>
                     <CheckCircle check={props.checked}/>
-                    {props.alarm ? <BellFilled /> : <Bell />}
+                    <BellButon isAlarm={props.isAlarm}></BellButon>
                 </TodoIconBox>
                 <TodoTitleBox>{props.title}</TodoTitleBox>
                 <TodoDateBox>

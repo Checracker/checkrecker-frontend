@@ -2,7 +2,7 @@ export type TodoProps = {
     id: number; //_todo id
     boradId: number; //board id
     order: number; //ListOrder
-    alarm: boolean; //alarm checked
+    isAlarm: boolean; //alarm checked
     title: string; //title
     checked: boolean;
     description: string; //_todo description
