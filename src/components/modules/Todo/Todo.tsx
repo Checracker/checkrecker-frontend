@@ -2,8 +2,6 @@ import {  Container as MuiContainer } from "@mui/material";
 import React from "react";
 import { styled as muiStyled } from "@mui/material";
 import { TodoProps, TodoStatus } from "@/components/modules/Todo/TodoProps";
-import Bell from "@/components/atoms/MUIIconButton/Bell";
-import BellFilled from "@/components/atoms/MUIIconButton/BellFilled";
 import { nanumGothic } from "@/app/utils/Fonts";
 import CheckCircle from "@/components/atoms/MUIIconButton/CheckCircle";
 import BellButon from "@/components/atoms/MUIIconButton/BellButon";
@@ -36,7 +34,7 @@ const Todo = (props: TodoProps) => {
         <Container>
             <TodoBox>
                 <TodoIconBox>
-                    <CheckCircle check={props.checked}/>
+                    <CheckCircle checked={props.checked}/>
                     <BellButon isAlarm={props.isAlarm}></BellButon>
                 </TodoIconBox>
                 <TodoTitleBox>{props.title}</TodoTitleBox>
@@ -75,6 +73,7 @@ const TodoBox = muiStyled(MuiFlexRowBox)({
 
     justifyContent:"flex-start",
     padding:"6px 16px",
+    width:"calc(50vw - 100px)",
     height:"52px",
     borderRadius:"20px",
     backgroundColor: "#FCF1F2"

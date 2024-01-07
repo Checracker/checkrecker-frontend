@@ -1,66 +1,56 @@
-"use client"
-import { styled as muiStyled } from "@mui/material";
-import { Container as MuiContainer } from "@mui/material";
+'use client';
 
-import React from "react";
-import styled from "@emotion/styled";
-import Todo from '@/components/modules/Todo/Todo';
-import { TodoProps } from "@/components/modules/Todo/TodoProps";
+import React from 'react';
+import styled from '@emotion/styled';
+import Arrow from '/public/image/arrow.svg';
+import ArrowVertical from '/public/image/arrow_vertical.svg';
+import ArrowHorizontal from '/public/image/arrow_horizon.svg';
+import Board from '@/components/modules/board/Board';
 type Props = {};
-
-const dummyTodo:TodoProps[] = [{
-    id: 0, //_todo id
-    boradId: 1, //board id
-    order: 2, //ListOrder
-    isAlarm: true, //alarm checked
-    title: "todo만들기", //title
-    checked: true,
-    description: "설명", //_todo description
-    status: "COMPLETE", //_todo status
-    createdDate: "2023-01-02", //생성날짜
-    startDate: "2023-01-02", //시작일
-    targetDate: "2023-01-02", //목표일
-    completedDate: "2023-01-02", //완료일
-
-},
-{
-    id: 0, //_todo id
-    boradId: 1, //board id
-    order: 2, //ListOrder
-    isAlarm: false, //alarm checked
-    title: "todo만들기2", //title
-    checked: false,
-    description: "설명", //_todo description
-    status: "IN_PROGRESS", //_todo status
-    createdDate: "2023-01-02", //생성날짜
-    startDate: "2023-01-02", //시작일
-    targetDate: "2023-01-02", //목표일
-    completedDate: "2023-01-02", //완료일
-
-},
-]
-
 
 export default function page({}: Props) {
     return (
-        <TodoList>
-            <Todo {...dummyTodo[0]}></Todo>
-            <Todo {...dummyTodo[1]}></Todo>
-        </TodoList>
+        <Box>
+            <div>
+                <Vertical>
+                    <ArrowVertical width={'100%'} height={'100%'} />
+                </Vertical>
+                <Horizontal>
+                    <ArrowHorizontal width={'100%'} height={'100%'} />
+                </Horizontal>
+            </div>
+            <Container>
+                <Board></Board>
+                <Board></Board>
+                <Board></Board>
+                <Board></Board>
+            </Container>
+        </Box>
     );
 }
 
+const Box = styled.div``;
 const Container = styled.div`
-    width:100vh;
-    height:100vh;
-`
-const TodoList = muiStyled(MuiContainer)`
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    gap:12px;
+    padding: 10px;
+    display: grid;
+    row-gap: 50px;
+    column-gap: 25px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    z-index: 10;
 `;
 
+const Vertical = styled.div`
+    position: absolute;
+    left: calc(50vw - 25px);
+    height: calc(100% - 50px);
 
+    z-index: 52;
+`;
 
+const Horizontal = styled.div`
+    position: absolute;
+    width: 100%;
+    top: calc(50vh + 55px);
+    z-index: 42;
+`;
