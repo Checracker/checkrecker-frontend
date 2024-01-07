@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Providers from "@/Provider/Providers";
 import "./globals.css"; // 전역 스타일 import
-import Script from "next/script";
-import { nanumGothic } from "@/app/utils/fonts";
+import { nanumGothic } from "@/app/utils/Fonts";
 
 export const metadata: Metadata = {
   title: "Create Next App",

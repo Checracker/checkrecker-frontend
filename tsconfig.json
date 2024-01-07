@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "/*": ["./*"]
+
     }
   },
   "include": [
@@ -29,7 +31,7 @@
     ".next/types/**/*.ts",
     "src/app/pages/_document.js",
     "src/app/pages/_document.js",
-    "src/app/pages/_apptsx"
+    "src/app/pages/_apptsx",
   ],
   "exclude": ["node_modules", ".next"]
 }
