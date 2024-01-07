@@ -3,7 +3,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
-import MenuTab from "@/components/atoms/test/menuTab/MenuTab";
+import MenuTab from "@/components/atoms/MenuTab/MenuTab";
 import { Black_Han_Sans } from "next/font/google";
 
 type Props = {};
@@ -15,43 +15,7 @@ const blackHansSans = Black_Han_Sans({
 
 export default function page({}: Props) {
   return (
-    <NavigationBar>
-      <UserBox>
-        <UserImageBox>
-          <Image src={"/img/logo.png"} width={60} height={60} alt="profile" />
-        </UserImageBox>
-        <UserNickname className={blackHansSans.className}>
-          체크래커린 님
-        </UserNickname>
-      </UserBox>
-      <MenuBox>
-        <MenuTab imgSrc="/img/icons/home.svg" alt="home" name="홈" />
-        <MenuTab imgSrc="/img/icons/board.svg" alt="board" name="보드" />
-        <MenuTab
-          imgSrc="/img/icons/calendar.svg"
-          alt="calendar"
-          name="캘린더 회고"
-        />
-        <MenuTab imgSrc="/img/icons/settings.svg" alt="settings" name="설정" />
-        <MenuTab imgSrc="/img/icons/notice.svg" alt="notice" name="공지" />
-        <MenuTab imgSrc="/img/icons/bin.svg" alt="bin" name="휴지통" />
-        <MenuTab
-          imgSrc="/img/icons/developers.svg"
-          alt="developers"
-          name="제작자"
-        />
-      </MenuBox>
-      <SearchBox>
-        <SearchIconBox>
-          <Image
-            src={"/img/icons/search.svg"}
-            width={30}
-            height={30}
-            alt="search"
-          />
-        </SearchIconBox>
-      </SearchBox>
-    </NavigationBar>
+    <div>page</div>
   );
 }
 
