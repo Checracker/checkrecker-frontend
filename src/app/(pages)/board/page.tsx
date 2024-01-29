@@ -13,10 +13,10 @@ export default function page({}: Props) {
         <Box>
             <div>
                 <Vertical>
-                    <ArrowVertical width={'100%'} height={'100%'} />
+                    <ArrowVertical height={"100%"}/>
                 </Vertical>
                 <Horizontal>
-                    <ArrowHorizontal width={'100%'} height={'100%'} />
+                    <ArrowHorizontal  />
                 </Horizontal>
             </div>
             <Container>
@@ -51,6 +51,6 @@ const Vertical = styled.div`
 const Horizontal = styled.div`
     position: absolute;
     width: 100%;
-    top: calc(50vh + 55px);
+    top: calc(50vh + 50px);
     z-index: 42;
 `;
