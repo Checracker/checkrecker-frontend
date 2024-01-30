@@ -15,8 +15,12 @@ export type TodoProps = {
     completedDate: string; //완료일
     subTodos?: TodoProps; //subTodo
     children?: ReactNode;
-    ref?: (element: HTMLElement | null) => void
 };
+
+export type TodoPropsWithIdx = TodoProps & {
+    idx: number;
+};
+
 
 type BoardProps = {
     boardId: number;

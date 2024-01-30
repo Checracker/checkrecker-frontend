@@ -6,7 +6,12 @@ import Arrow from '/public/image/arrow.svg';
 import ArrowVertical from '/public/image/arrow_vertical.svg';
 import ArrowHorizontal from '/public/image/arrow_horizon.svg';
 import Board from '@/components/modules/board/Board';
-import { DragDropContext, Draggable, DropResult, Droppable } from 'react-beautiful-dnd';
+import {
+    DragDropContext,
+    Draggable,
+    DropResult,
+    Droppable,
+} from 'react-beautiful-dnd';
 import Todo from '@/components/modules/Todo/Todo';
 import { TodoProps } from '@/components/modules/Todo/TodoProps';
 type Props = {};
@@ -14,7 +19,7 @@ const dummyTodo: TodoProps[] = [
     {
         id: 0, //_todo id
         boradId: 1, //board id
-        order: 2, //ListOrder
+        order: 1, //ListOrder
         isAlarm: true, //alarm checked
         title: 'todo만들기', //title
         checked: true,
@@ -42,7 +47,7 @@ const dummyTodo: TodoProps[] = [
     {
         id: 2, //_todo id
         boradId: 1, //board id
-        order: 2, //ListOrder
+        order: 3, //ListOrder
         isAlarm: false, //alarm checked
         title: 'todo만들기2', //title
         checked: false,
@@ -56,7 +61,7 @@ const dummyTodo: TodoProps[] = [
     {
         id: 3, //_todo id
         boradId: 1, //board id
-        order: 2, //ListOrder
+        order: 4, //ListOrder
         isAlarm: false, //alarm checked
         title: 'todo만들기2', //title
         checked: false,
@@ -69,13 +74,11 @@ const dummyTodo: TodoProps[] = [
     },
 ];
 export default function page({}: Props) {
-    const [items, setItems] = useState(
-        dummyTodo
-      );
-      
-      const onDragEnd = ({ source, destination }: DropResult) => {
+    const [items, setItems] = useState(dummyTodo);
+
+    const onDragEnd = ({ source, destination }: DropResult) => {
         if (!destination) return;
-      
+
         // 깊은 복사
         const _items = JSON.parse(JSON.stringify(items)) as typeof items;
         // 기존 아이템 뽑아내기
@@ -84,8 +87,7 @@ export default function page({}: Props) {
         _items.splice(destination.index, 0, targetItem);
         // 상태 변경
         setItems(_items);
-      };
-
+    };
 
     return (
         <Box>
@@ -106,23 +108,7 @@ export default function page({}: Props) {
                                 {...provided.droppableProps}
                             >
                                 {items.map((item, index) => (
-                                    <Draggable
-                                        key={item.id}
-                                        draggableId={String(index)+item.id}
-                                        index={index}
-                                    >
-                                        {dragProvided => (
-                                            <div
-                                            ref={dragProvided.innerRef}
-                                            {...dragProvided.draggableProps}
-                                            {...dragProvided.dragHandleProps}
-                                          >
-                                            <Todo {...items[index]}
-                                            >
-                                            </Todo>
-                                            </div>
-                                        )}
-                                    </Draggable>
+                                    <Todo idx={index} {...item}></Todo>
                                 ))}
                                 {provided.placeholder}
                             </div>
