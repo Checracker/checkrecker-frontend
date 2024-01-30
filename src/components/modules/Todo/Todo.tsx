@@ -1,5 +1,5 @@
 import {  Container as MuiContainer } from "@mui/material";
-import React from "react";
+import React, { Children } from "react";
 import { styled as muiStyled } from "@mui/material";
 import { TodoProps, TodoStatus } from "@/components/modules/Todo/TodoProps";
 import { nanumGothic } from "@/app/utils/Fonts";
@@ -29,7 +29,8 @@ const filteredDate = (props:TodoProps) =>{
 }
 
 
-const Todo = (props: TodoProps) => {
+const Todo  = (props: TodoProps) => {
+    
     return (
         <Container>
             <TodoBox>

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Todo from '../Todo/Todo';
 import { TodoProps } from '../Todo/TodoProps';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 type Props = {};
 const dummyTodo: TodoProps[] = [
@@ -66,13 +67,14 @@ const dummyTodo: TodoProps[] = [
 function Board({}: Props) {
     return (
         <Container>
-            <TodoList>
-                <Todo {...dummyTodo[0]}></Todo>
-                <Todo {...dummyTodo[1]}></Todo>
-                <Todo {...dummyTodo[1]}></Todo>
-                <Todo {...dummyTodo[1]}></Todo>
-                <Todo {...dummyTodo[1]}></Todo>
-            </TodoList>
+                <TodoList>
+                    <Todo {...dummyTodo[0]}></Todo>
+                    <Todo {...dummyTodo[1]}></Todo>
+                    <Todo {...dummyTodo[1]}></Todo>
+                    <Todo {...dummyTodo[1]}></Todo>
+                    <Todo {...dummyTodo[1]}></Todo>
+                </TodoList>
+
         </Container>
     );
 }

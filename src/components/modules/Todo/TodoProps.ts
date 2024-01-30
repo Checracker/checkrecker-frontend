@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type TodoProps = {
     id: number; //_todo id
     boradId: number; //board id
@@ -12,6 +14,8 @@ export type TodoProps = {
     targetDate: string; //목표일
     completedDate: string; //완료일
     subTodos?: TodoProps; //subTodo
+    children?: ReactNode;
+    ref?: (element: HTMLElement | null) => void
 };
 
 type BoardProps = {
