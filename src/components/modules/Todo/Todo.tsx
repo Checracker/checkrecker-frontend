@@ -7,7 +7,7 @@ import CheckCircle from '@/components/atoms/MUIIconButton/CheckCircle';
 import BellButon from '@/components/atoms/MUIIconButton/BellButon';
 import { Draggable } from 'react-beautiful-dnd';
 
-const filteredStatus = (status: TodoStatus) => {
+const filteredStatus = (status: TodoStatus|string) => {
     switch (status) {
         case 'COMPLETE':
             return '완료';
@@ -33,7 +33,7 @@ const Todo = (props: TodoPropsWithIdx) => {
     return (
         <Draggable
             key={props.id}
-            draggableId={String(props.id) + props.id}
+            draggableId={String(props.id)}
             index={props.idx}
         >
             {dragProvided => (

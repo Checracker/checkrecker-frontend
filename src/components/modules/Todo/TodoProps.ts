@@ -8,7 +8,7 @@ export type TodoProps = {
     title: string; //title
     checked: boolean;
     description: string; //_todo description
-    status: TodoStatus; //_todo status
+    status: TodoStatus | string; //_todo status
     createdDate: string; //생성날짜
     startDate: string; //시작일
     targetDate: string; //목표일
