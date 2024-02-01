@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import Todo from '../Todo/Todo';
-import { TodoProps } from '../Todo/TodoProps';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { BoardProps, TodoProps } from '../Todo/TodoProps';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { TItemStatus } from '@/constants/DummyTodo';
 
 type Props = {
     children?: ReactNode;
@@ -65,15 +66,25 @@ const dummyTodo: TodoProps[] = [
         completedDate: '2023-01-02', //완료일
     },
 ];
-
-function Board({children}: Props) {
+const InnerList = React.memo(({todos}:any)=>(
+    <TodoList>
+    {todos.map((item:any, index:any) => (
+        <Todo idx={index} {...item}></Todo>
+    ))}
+    </TodoList>
+))
+function Board({ boardId, todos }: BoardProps) {
     return (
-        <Container>
-                <TodoList>
-                    {children}
-                </TodoList>
-
-        </Container>
+        <Droppable key={boardId} droppableId={boardId}>
+            {provided => (
+                <div ref={provided.innerRef} {...provided.droppableProps}>
+                    <Container>
+                            <InnerList todos={todos}/>
+                        {provided.placeholder}
+                    </Container>
+                </div>
+            )}
+        </Droppable>
     );
 }
 
@@ -89,5 +100,4 @@ const TodoList = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 12px;
 `;

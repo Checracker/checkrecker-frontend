@@ -22,8 +22,8 @@ export type TodoPropsWithIdx = TodoProps & {
 };
 
 
-type BoardProps = {
-    boardId: number;
+export type BoardProps = {
+    boardId: string ;
     todos: TodoProps[];
 };
 

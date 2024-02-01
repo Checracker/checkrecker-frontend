@@ -1,27 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { resetServerContext } from "react-beautiful-dnd"
-import Arrow from '/public/image/arrow.svg';
+import { resetServerContext } from 'react-beautiful-dnd';
 import ArrowVertical from '/public/image/arrow_vertical.svg';
 import ArrowHorizontal from '/public/image/arrow_horizon.svg';
 import Board from '@/components/modules/board/Board';
-import {
-    DragDropContext,
-    Draggable,
-    DropResult,
-    Droppable,
-} from 'react-beautiful-dnd';
+import { DragDropContext, DropResult, Droppable } from 'react-beautiful-dnd';
 import Todo from '@/components/modules/Todo/Todo';
-import { TodoProps } from '@/components/modules/Todo/TodoProps';
-import {
-    TBoard,
-    TItemStatus,
-    boardDummy,
-    dummyData,
-    dummyTodo,
-} from '@/constants/DummyTodo';
+import { TBoard, TItemStatus, boardDummy } from '@/constants/DummyTodo';
 type Props = {};
 
 export default function page({}: Props) {
@@ -40,7 +27,23 @@ export default function page({}: Props) {
         // 상태 변경
         setItems(_items);
     };
-    resetServerContext()
+
+    const [enabled, setEnabled] = useState(false);
+
+    useEffect(() => {
+        const animation = requestAnimationFrame(() => setEnabled(true));
+
+        return () => {
+            cancelAnimationFrame(animation);
+            setEnabled(false);
+        };
+    }, []);
+
+    if (!enabled) {
+        return null;
+    }
+    
+    resetServerContext();
     return (
         boardDummy && (
             <Box>
@@ -55,31 +58,11 @@ export default function page({}: Props) {
                 <Container>
                     <DragDropContext onDragEnd={onDragEnd}>
                         {Object.keys(items).map((key, index) => (
-                            <Droppable key={key} droppableId={key}>
-                                {provided => (
-                                    <div
-                                        ref={provided.innerRef}
-                                        {...provided.droppableProps}
-                                    >
-                                        <Board>
-                                            {items[key as TItemStatus].map(
-                                                (item, index) => (
-                                                    <Todo
-                                                        idx={index}
-                                                        {...item}
-                                                    ></Todo>
-                                                ),
-                                            )}
-                                            {provided.placeholder}
-                                        </Board>
-                                    </div>
-                                )}
-                            </Droppable>
+                            <Board
+                                boardId={key}
+                                todos={items[key as TItemStatus]}
+                            ></Board>
                         ))}
-                        {/* <Board></Board>
-                    <Board></Board>
-                    <Board></Board>
-                    <Board></Board> */}
                     </DragDropContext>
                 </Container>
             </Box>
