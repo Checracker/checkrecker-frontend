@@ -91,11 +91,12 @@ const TodoTitleBox = muiStyled(MuiFlexRowBox)({
 
 const TodoBox = muiStyled(MuiFlexRowBox)({
     justifyContent: 'flex-start',
-    padding: '6px 16px',
+    padding: '12px 16px',
     width: 'calc(50vw - 100px)',
     height: '52px',
     borderRadius: '20px',
     backgroundColor: '#FCF1F2',
+    marginBottom: "12px",
 });
 
 const TodoDateBox = muiStyled('div')({
