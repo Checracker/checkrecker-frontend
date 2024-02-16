@@ -9,6 +9,7 @@ import Board from '@/components/modules/board/Board';
 import { DragDropContext, DropResult, Droppable } from 'react-beautiful-dnd';
 import Todo from '@/components/modules/Todo/Todo';
 import { TBoard, TItemStatus, boardDummy } from '@/constants/DummyTodo';
+import Arrow from '@/components/atoms/arrow/Arrow';
 type Props = {};
 
 export default function page({}: Props) {
@@ -42,18 +43,21 @@ export default function page({}: Props) {
     if (!enabled) {
         return null;
     }
-    
+
     resetServerContext();
+
     return (
         boardDummy && (
             <Box>
                 <div>
-                    <Vertical>
+                    {/* <Vertical>
                         <ArrowVertical height={'100%'} />
                     </Vertical>
                     <Horizontal>
                         <ArrowHorizontal />
-                    </Horizontal>
+                    </Horizontal> */}
+                    {/* <Arrow></Arrow> */}
+                    <CssArrow/>
                 </div>
                 <Container>
                     <DragDropContext onDragEnd={onDragEnd}>
@@ -81,17 +85,26 @@ const Container = styled.div`
     z-index: 10;
 `;
 
-const Vertical = styled.div`
+const CssArrow = styled.div`
     position: absolute;
-    left: calc(50vw - 25px);
-    height: calc(100% - 50px);
-
-    z-index: 52;
-`;
-
-const Horizontal = styled.div`
+    top: calc(50% + 50px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -10;
+    width: 90%; // 요소의 가로 길이를 90%로 설정
+    height: 15px; /* 선의 두께 */
+    background: url('/image/texture.svg'); /* 크레용질 이미지 */
+    border: none;
+    &::after {
+        content: '';
+    /* 화면에 나오게 */
+    display: block;
     position: absolute;
-    width: 100%;
-    top: calc(50vh + 50px);
-    z-index: 42;
+    right: 0;
+    top: 50%;
+    border:solid ; 
+    border-width: 15px 15px 0 0;
+    border-image: url('/image/texture.png');
+    transform: translateY(-50%) rotate(45deg); 
+    }
 `;

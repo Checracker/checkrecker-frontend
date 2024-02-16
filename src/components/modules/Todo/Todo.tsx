@@ -96,7 +96,7 @@ const TodoBox = muiStyled(MuiFlexRowBox)({
     height: '52px',
     borderRadius: '20px',
     backgroundColor: '#FCF1F2',
-    marginBottom: "12px"
+    marginBottom: "12px",
 });
 
 const TodoDateBox = muiStyled('div')({

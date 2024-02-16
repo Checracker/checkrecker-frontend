@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import React from "react";
-import styled from "@emotion/styled";
-import Image from "next/image";
-import MenuTab from "@/components/atoms/MenuTab/MenuTab";
-import { Black_Han_Sans } from "next/font/google";
-import Link from "next/link";
+import React from 'react';
+import styled from '@emotion/styled';
+import Image from 'next/image';
+import MenuTab from '@/components/atoms/MenuTab/MenuTab';
+import { Black_Han_Sans } from 'next/font/google';
+import Link from 'next/link';
 
 type Props = {};
 
 const blackHansSans = Black_Han_Sans({
-    weight: "400",
-    subsets: ["latin"],
+    weight: '400',
+    subsets: ['latin'],
 });
 
 const NavigationBar = (props: Props) => {
@@ -20,7 +20,7 @@ const NavigationBar = (props: Props) => {
             <UserBox>
                 <UserImageBox>
                     <Image
-                        src={"/image/logo.png"}
+                        src={'/image/logo.png'}
                         width={60}
                         height={60}
                         alt="profile"
@@ -32,7 +32,7 @@ const NavigationBar = (props: Props) => {
             </UserBox>
             <MenuBox>
                 <MenuTab imgSrc="/image/icons/home.svg" alt="home" name="홈" />
-                <StyledLink href={"/board"} >
+                <StyledLink href={'/board'}>
                     <MenuTab
                         imgSrc="/image/icons/board.svg"
                         alt="board"
@@ -54,7 +54,11 @@ const NavigationBar = (props: Props) => {
                     alt="notice"
                     name="공지"
                 />
-                <MenuTab imgSrc="/image/icons/bin.svg" alt="bin" name="휴지통" />
+                <MenuTab
+                    imgSrc="/image/icons/bin.svg"
+                    alt="bin"
+                    name="휴지통"
+                />
                 <MenuTab
                     imgSrc="/image/icons/developers.svg"
                     alt="developers"
@@ -64,7 +68,7 @@ const NavigationBar = (props: Props) => {
             <SearchBox>
                 <SearchIconBox>
                     <Image
-                        src={"/image/icons/search.svg"}
+                        src={'/image/icons/search.svg'}
                         width={30}
                         height={30}
                         alt="search"
@@ -78,6 +82,8 @@ const NavigationBar = (props: Props) => {
 export default NavigationBar;
 
 const Container = styled.div`
+    width: 100%;
+    height: 120px;
     padding: 4px 21px;
     background-color: #c91725;
     box-sizing: border-box;
@@ -143,5 +149,4 @@ const SearchIconBox = styled.div`
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-
-`
+`;
