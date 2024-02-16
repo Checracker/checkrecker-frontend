@@ -5,8 +5,7 @@ import { Black_Han_Sans } from 'next/font/google';
 import { Button } from '@mui/material';
 import Image from 'next/image';
 import { ChangeEvent, useState } from 'react';
-import axios from 'axios';
-import { client } from '@/app/utils/Axios';
+import { client } from '@/app/utils/axios';
 
 const blackHansSans = Black_Han_Sans({
     weight: '400',

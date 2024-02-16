@@ -3,9 +3,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import MenuTab from '@/components/atoms/MenuTab/MenuTab';
 import { Black_Han_Sans } from 'next/font/google';
 import Link from 'next/link';
+import MenuTab from '../atoms/menuTab/MenuTab';
 
 type Props = {};
 
