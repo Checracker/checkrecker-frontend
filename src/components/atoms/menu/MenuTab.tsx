@@ -14,7 +14,7 @@ export default function MenuTab({ imgSrc, alt, name }: MenuTabProps) {
     return (
         <MenuTabBox>
             <MenuTabIcon>
-                <Image src={imgSrc} width={40} height={40} alt={alt} />
+                <Image src={imgSrc} width={50} height={50} alt={alt} />
             </MenuTabIcon>
             <MenuTabText className={nanumGothic.className}>{name}</MenuTabText>
         </MenuTabBox>
@@ -22,12 +22,15 @@ export default function MenuTab({ imgSrc, alt, name }: MenuTabProps) {
 }
 const MenuTabIcon = styled.div`
     box-sizing: border-box;
-    padding: 5px 0 0 0;
+    padding: 13px;
     width: 76px;
-        color: white;
+    height: 76px;
+    color: white;
 `;
 const MenuTabText = styled.div`
-      font-weight: 400;
+  text-decoration:none;
+
+    font-weight: 400;
     font-style: normal;
     font-size: 16px;
 `;
