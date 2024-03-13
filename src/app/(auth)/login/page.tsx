@@ -6,6 +6,8 @@ import { Button } from '@mui/material';
 import Image from 'next/image';
 import { ChangeEvent, useState } from 'react';
 import { client } from '@/app/utils/axios';
+import { config } from 'process';
+import axios from 'axios';
 
 const blackHansSans = Black_Han_Sans({
     weight: '400',
@@ -52,26 +54,14 @@ export default function Login() {
     };
 
     const onClickLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
-        const data = {
-            email: 'bananana0118@gmail.com',
-            password: 'aprkzjvl',
-        };
+        const data = userInfo;
 
-        console.log('>>>>>>>>>>>>Login>>>>>>>>>>>>>');
-
-        const res = await client.post('/v1/auth/sign-in/login', data);
-        console.log(res);
+        try {
+            const res = await client.post(`/v1/auth/sign-in/local`, data);
+        } catch (err) {
+            console.log(err);
+        }
     };
-    // const onLogin = async (userInfo : UserInfo)=>{
-    //   try{
-
-    //   }catch(error){
-    //     const axiosError = error as AxiosError
-    //   }
-    //   return result
-    // }
-    console.log(userInfo);
-
     return (
         <Container>
             <PatternBox></PatternBox>
