@@ -5,9 +5,8 @@ import { Black_Han_Sans } from 'next/font/google';
 import { Button } from '@mui/material';
 import Image from 'next/image';
 import { ChangeEvent, useState } from 'react';
-import { client } from '@/app/utils/axios';
-import { config } from 'process';
-import axios from 'axios';
+import { requestPostAuthLogin } from '@/apis/auth';
+import { useRouter } from 'next/navigation';
 
 const blackHansSans = Black_Han_Sans({
     weight: '400',
@@ -43,6 +42,7 @@ export default function Login() {
         password: '',
     });
     const [isValid, setIsValid] = useState<Boolean>(false);
+    const router = useRouter();
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -57,8 +57,28 @@ export default function Login() {
         const data = userInfo;
 
         try {
-            const res = await client.post(`/v1/auth/sign-in/local`, data);
+            const res = await requestPostAuthLogin(data);
+            if (res.status === 200) {
+                const { accessToken, refreshToken, name } = res.data;
+
+                sessionStorage.setItem(
+                    'accessToken',
+                    JSON.stringify(accessToken),
+                );
+                sessionStorage.setItem(
+                    'refreshToken',
+                    JSON.stringify(refreshToken),
+                );
+
+                alert('어서오세요!' + name + '님!');
+
+                router.push('/board');
+            }
+            //세션스토리지에 토큰 저장
         } catch (err) {
+            alert(
+                '로그인ID와 비밀번호가 일치하지 않습니다. 다시 확인해 주세요.',
+            );
             console.log(err);
         }
     };
@@ -100,7 +120,7 @@ export default function Login() {
                     <Image
                         width={100}
                         height={30}
-                        src="/img/social.png"
+                        src="/image/social.png"
                         style={{ marginTop: '50px' }}
                         alt="social"
                     ></Image>
